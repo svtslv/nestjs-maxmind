@@ -1,6 +1,6 @@
 {
   "name": "nestjs-maxmind",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Nest - modern, fast, powerful node.js web framework (@maxmind)",
   "author": "Sviatoslav H",
   "license": "MIT",

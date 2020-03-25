@@ -15,7 +15,7 @@ Integrates Maxmind with Nest
 
 ## Installation
 
-```bash
+```sh
 npm install nestjs-maxmind maxmind
 ```
 
@@ -27,8 +27,8 @@ npx nestjs-modules
 
 ## Examples
 
-```bash
-MAXMIND_LICENSE_KEY=license-key npm install geolite2
+```sh
+npx geoip2-cli --download --licenseKey=MAXMIND_LICENSE_KEY
 ```
 
 ### MaxmindModule.forRoot(options, connection?)
@@ -37,14 +37,13 @@ MAXMIND_LICENSE_KEY=license-key npm install geolite2
 import { Module } from '@nestjs/common';
 import { MaxmindModule } from 'nestjs-maxmind';
 import { AppController } from './app.controller';
-import * as geolite2 from 'geolite2';
+import { join } from 'path';
 
 @Module({
   imports: [
     MaxmindModule.forRoot({
       config: {
-        // file: join(process.cwd(), 'GeoLite2-City.mmdb'),
-        file: geolite2.paths.city,
+        file: join(process.cwd(), 'geoip2-cli', 'GeoLite2-City.mmdb'),
       },
     }),
   ],
@@ -59,15 +58,14 @@ export class AppModule {}
 import { Module } from '@nestjs/common';
 import { MaxmindModule } from 'nestjs-maxmind';
 import { AppController } from './app.controller';
-import * as geolite2 from 'geolite2';
+import { join } from 'path';
 
 @Module({
   imports: [
     MaxmindModule.forRootAsync({
       useFactory: () => ({
         config: {
-          // file: join(process.cwd(), 'GeoLite2-City.mmdb'),
-          file: geolite2.paths.city
+          file: join(process.cwd(), 'geoip2-cli', 'GeoLite2-City.mmdb'),
         },
       }),
     }),
